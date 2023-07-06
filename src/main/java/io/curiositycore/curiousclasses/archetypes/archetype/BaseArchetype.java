@@ -2,15 +2,20 @@ package io.curiositycore.curiousclasses.archetypes.archetype;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.Archetype;
 import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.ArchetypeBuilder;
+import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
  * Abstract representing the base of any archetype within the plugin.
  */
 @Getter
+@Setter
 public abstract class BaseArchetype implements Archetype {
     /**
      * The name of the archetype.
@@ -24,6 +29,10 @@ public abstract class BaseArchetype implements Archetype {
      * The uniqueId of the archetype;
      */
     protected UUID archetypeId;
+    /**
+     * Map containing all skills for each tier, contained within a set.
+     */
+    protected Map<Tier, Set<Skill>> skillMap;
 
 
     //TODO This is not good enough, there needs to be a more focused class type for individual archetypes to be
