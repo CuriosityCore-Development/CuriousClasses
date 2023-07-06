@@ -1,0 +1,4 @@
+name: CuriousClasses
+version: '${project.version}'
+main: io.curiositycore.curiousclasses.CuriousClasses
+api-version: 1.19
