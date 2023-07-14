@@ -22,6 +22,7 @@ public interface Archetype {
      * Upgrade the tier of the archetype.
      */
     void upgradeTier();
+
     /**
      * Downgrade the tier of the archetype.
      */

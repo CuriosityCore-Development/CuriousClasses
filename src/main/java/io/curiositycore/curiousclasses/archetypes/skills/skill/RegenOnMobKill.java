@@ -9,12 +9,10 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class RegenOnMobKill extends BaseSkill implements PassiveSkill {
-    /**
-     * Constructor that utilises a builder object to initialise the skll.
-     *
-     */
 
-    @Override
+    /**
+     * Constructor that utilises a builder object to initialise the skill.
+     */
     public void setEffect(Player player) {
         if(!meetsRequirements(player)){
             return;
@@ -37,4 +35,5 @@ public class RegenOnMobKill extends BaseSkill implements PassiveSkill {
     public boolean meetsRequirements(Player player) {
         return player.getInventory().getHelmet().getType() == Material.LEATHER_HELMET;
     }
+
 }

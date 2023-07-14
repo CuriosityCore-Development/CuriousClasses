@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
  * Interface that represents a skill that has passive effects (not activated manually, but rather provides constant
  * effects to those with the skill).
  */
-public interface PassiveSkill extends Skill{
+public interface PassiveSkill{
     /**
      * Sets the effect of the skill.
      */

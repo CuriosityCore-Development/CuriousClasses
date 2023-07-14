@@ -6,5 +6,9 @@ package io.curiositycore.curiousclasses.archetypes.archetype.interfaces;
  * @param <C> The generic parameter type that represents what requires constructing within the builder.
  */
 public interface Builder<C> {
+    /**
+     * Build the builder's object.
+     * @param classToBuild Object to build.
+     */
     void build(C classToBuild);
 }
