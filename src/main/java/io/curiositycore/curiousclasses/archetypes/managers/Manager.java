@@ -20,4 +20,10 @@ public interface Manager<O> {
      * @param objectId The unique id of the object to be removed.
      */
     void removeFromManager(UUID objectId);
+
+    /**
+     * Checks to see if the instance, based on their unique id, is present within the archetype manager.
+     * @param uuid The unique id of the manager.
+     */
+    boolean isWithinMap(UUID uuid);
 }

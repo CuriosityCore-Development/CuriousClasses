@@ -22,7 +22,6 @@ public abstract class BaseSkill implements Skill {
      *
      * @param skillBuilder The builder utilised to create the skill.
      */
-    protected BaseSkill(SkillBuilder skillBuilder){
-        skillBuilder.build(this);
-    }
+
+
 }

@@ -26,4 +26,13 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
     public void removeFromManager(UUID archetypeId) {
         this.archetypeMap.remove(archetypeId);
     }
+
+    @Override
+    public boolean isWithinMap(UUID uuid) {
+        return this.archetypeMap.containsKey(uuid);
+    }
+
+    public<C extends BaseArchetype> boolean isOfType(Class<C> clazz, UUID archetypeId){
+        return this.archetypeMap.get(archetypeId).getClass() == clazz;
+    }
 }

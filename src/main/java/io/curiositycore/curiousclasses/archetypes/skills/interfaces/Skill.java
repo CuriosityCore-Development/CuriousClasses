@@ -1,6 +1,7 @@
 package io.curiositycore.curiousclasses.archetypes.skills.interfaces;
 
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
+import org.bukkit.entity.Player;
 
 /**
  * Interface that represents a Skill within the plugin.
@@ -17,5 +18,7 @@ public interface Skill {
      * @return The tier of the skill.
      */
     Tier getTier();
+
+    boolean meetsRequirements(Player player);
 
 }
