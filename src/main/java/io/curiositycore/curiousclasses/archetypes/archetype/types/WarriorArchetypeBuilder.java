@@ -9,10 +9,21 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+/**
+ * Builder for the {@link io.curiositycore.curiousclasses.archetypes.archetype.types.WarriorArchetype WarriorArchetype}.
+ */
 public class WarriorArchetypeBuilder extends ArchetypeBuilder<WarriorArchetype>{
-
+    //TODO may need removing in place of new config system.
     private Set<Skill> ENTITY_DEATH_SKILL_SET = new HashSet<>();
+
+    /**
+     * A map of skills, as related to the tier the skills belong to for the archetype.
+     */
     private static final Map<Tier, Set<Skill>> skillMap = new HashMap<>();
+
+    /**
+     * A map of skills, as related to an event relevant to the archetype.
+     */
     private static final Map<Class<? extends Event>, Set<Skill>> eventMap = new HashMap<>();
 
     @Override

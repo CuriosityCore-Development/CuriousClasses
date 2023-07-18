@@ -17,7 +17,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.UUID;
-//TODO determine best way to set up the chain of calls to get the skill.
+/**
+ * Test class to explore how best to approach the event listeners of the plugin. <i>Temporary so will not have full
+ * docs</i>.
+ */
 public class ListenerTest implements Listener {
     ArchetypeManager archetypeManager;
     public ListenerTest(ArchetypeManager archetypeManager){

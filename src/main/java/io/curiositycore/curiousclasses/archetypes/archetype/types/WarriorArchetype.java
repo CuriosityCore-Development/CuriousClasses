@@ -1,14 +1,12 @@
 package io.curiositycore.curiousclasses.archetypes.archetype.types;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.PlayerArchetype;
-import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
-import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import org.bukkit.entity.Player;
-
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
-import java.util.Set;
 
+/**
+ * Test class of the general functionality of the skill system. <i>Temporary so will not have full docs</i>
+ */
 public class WarriorArchetype extends PlayerArchetype {
     /**
      * Constructor for the initialisation that utilises a builder object to initialise the archetype.

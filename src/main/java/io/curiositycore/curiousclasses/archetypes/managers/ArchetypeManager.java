@@ -36,11 +36,25 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
         return this.archetypeMap.containsKey(uuid);
     }
 
+    /**
+     * Checks to see if the archetype is of the specified class.
+     * @param clazz The specified class of archetype.
+     * @param archetypeId The id of the archetype to check.
+     * @return True if the checked archetype is of the specified class, false if it's not.
+     * @param <C> The type parameter of the class to check, that specifies it must be a child
+     *           class of the BaseArchetype abstract.
+     */
     public<C extends BaseArchetype> boolean isOfType(Class<C> clazz, UUID archetypeId){
         return this.archetypeMap.get(archetypeId).getClass() == clazz;
     }
-    //TODO add event checks, i.e. checks to be done when an ability is triggered by an event (probably best to add to
-    //     the passive skill interface. Or perhaps adding a new "reactive skill" interface that extends PassiveSkill.
+
+    /**
+     * Activates an ability of the specified archetype.
+     * @param event The event that triggered the ability.
+     * @param archeTypeId The id of the archetype being triggered.
+     * @param targetOfAbility The target of the ability.
+     * @param <T> The type parameter that represents the target of the ability.
+     */
     public <T> void activateAbility(Event event, UUID archeTypeId, T targetOfAbility){
         this.archetypeMap.get(archeTypeId).getEventSkillSet().get(event.getClass()).forEach(skill->skill.activate(targetOfAbility));
     }

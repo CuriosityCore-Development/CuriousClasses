@@ -11,8 +11,9 @@ import org.bukkit.potion.PotionEffectType;
 public class RegenOnMobKill extends BaseSkill<Player> implements SingleEntityPassiveSkill<Player> {
 
     /**
-     * Constructor that utilises a builder object to initialise the skill.
+     * Sets the effect of the skill on the player.
      */
+    @Override
     public void setEffect(Player player) {
         if(!meetsRequirements(player)){
             return;

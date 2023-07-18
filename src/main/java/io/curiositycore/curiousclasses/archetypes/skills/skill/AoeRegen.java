@@ -12,6 +12,9 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.Set;
 
+/**
+ * Test class of the AOE functionality of the skill system. <i>Temporary so will not have full docs</i>
+ */
 public class AoeRegen extends BaseSkill<Player> implements AoeEntityPassiveSkill<Player> {
     @Getter @Setter
     private int aoeRadius = 10;

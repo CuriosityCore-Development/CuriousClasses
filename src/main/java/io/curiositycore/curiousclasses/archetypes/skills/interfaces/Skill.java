@@ -26,6 +26,11 @@ public interface Skill<T> {
      */
     boolean meetsRequirements(Player player);
 
+    /**
+     * Activates the skill's effects.
+     * @param skillOwner The owner of the skill being activated.
+     */
+
     void activate(T skillOwner);
 
 }
