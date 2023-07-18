@@ -8,6 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
+/**
+ * The CuriousClasses plugin is [insert proxy description here]
+ */
 public class CuriousClasses extends JavaPlugin {
     private final boolean unitTest;
     public CuriousClasses(){
