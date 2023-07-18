@@ -1,13 +1,15 @@
 package io.curiositycore.curiousclasses.archetypes.archetype;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.Archetype;
-import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.ArchetypeBuilder;
+import io.curiositycore.curiousclasses.archetypes.archetype.types.ArchetypeBuilder;
 import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -39,8 +41,9 @@ public abstract class BaseArchetype implements Archetype {
      * Constructor for the initialisation that utilises a builder object to initialise the archetype.
      * @param archetypeBuilder The builder utilised to create the archetype.
      */
-    protected BaseArchetype(ArchetypeBuilder archetypeBuilder){
+    protected BaseArchetype(ArchetypeBuilder archetypeBuilder, Player player) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         archetypeBuilder.build(this);
+        this.setArchetypeId(player.getUniqueId());
     }
 
 }

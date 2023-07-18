@@ -1,13 +1,14 @@
 package io.curiositycore.curiousclasses.archetypes.skills.skill;
 
-import io.curiositycore.curiousclasses.archetypes.skills.interfaces.PassiveSkill;
+import io.curiositycore.curiousclasses.archetypes.skills.interfaces.targets.entities.singular.SingleEntityPassiveSkill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class RegenOnMobKill extends BaseSkill<Player> implements PassiveSkill {
+public class RegenOnMobKill extends BaseSkill<Player> implements SingleEntityPassiveSkill<Player> {
 
     /**
      * Constructor that utilises a builder object to initialise the skill.
@@ -18,6 +19,11 @@ public class RegenOnMobKill extends BaseSkill<Player> implements PassiveSkill {
         }
         PotionEffect skillEffect = new PotionEffect(PotionEffectType.REGENERATION,100,0,false,true,true);
         player.addPotionEffect(skillEffect);
+    }
+
+    @Override
+    public Player getTargets(Entity skillOwner) {
+        return (Player) skillOwner;
     }
 
     @Override

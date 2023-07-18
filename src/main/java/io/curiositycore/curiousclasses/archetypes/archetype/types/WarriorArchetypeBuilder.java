@@ -1,19 +1,20 @@
 package io.curiositycore.curiousclasses.archetypes.archetype.types;
 
-import io.curiositycore.curiousclasses.archetypes.archetype.BaseArchetype;
-import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.ArchetypeBuilder;
 import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.skills.skill.RegenOnMobKill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityEvent;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-public class WarriorArchetypeBuilder implements ArchetypeBuilder{
-//TODO add the methods for setting properly (they are null atm)
+public class WarriorArchetypeBuilder extends ArchetypeBuilder<WarriorArchetype>{
+
+    private Set<Skill> ENTITY_DEATH_SKILL_SET = new HashSet<>();
+    private static final Map<Tier, Set<Skill>> skillMap = new HashMap<>();
+    private static final Map<Class<? extends Event>, Set<Skill>> eventMap = new HashMap<>();
+
     @Override
     public String setArchetypeName() {
         return "Warrior";
@@ -25,22 +26,24 @@ public class WarriorArchetypeBuilder implements ArchetypeBuilder{
     }
 
     @Override
-    public Map<Tier, Set<Skill>> setSkillMap() {
-        Map<Tier,Set<Skill>> skillMap = new HashMap<>();
-        Set<Skill> skillSet = new HashSet<>();
-        skillSet.add(new RegenOnMobKill());
-        skillMap.put(Tier.TIER_ONE,skillSet);
+    protected Map<Tier, Set<Skill>> setArchetypeSkillMap() {
 
-        return skillMap;
+        return null;
     }
 
     @Override
-    public Map<Class<? extends Event>, Set<Skill>> setEventMap() {
-        Map<Class<? extends Event>,Set<Skill>> eventMap = new HashMap<>();
-        Set<Skill> skillSet = new HashSet<>();
-        skillSet.add(new RegenOnMobKill());
-        eventMap.put(EntityDeathEvent.class,skillSet);
-        return eventMap;
+    protected Map<Class<? extends Event>, Set<Skill>> setArchetypeEventMap() {
+        return null;
     }
+
+    //TODO The approach to explore here is having a config setup that allows for users to define what skills are to be
+    //     applied to what archetype. This could expand later into a system where the config allows for new skills and
+    //     artefacts to be made (quite similar to mythic mobs, and might indeed utilise their api)
+    @Override
+    protected Set<Skill> initialiseTierSet(Tier tierOfSet) {
+
+        return null;
+    }
+
 
 }

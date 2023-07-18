@@ -1,0 +1,1 @@
+package io.curiositycore.curiousclasses.archetypes.skills.interfaces.targets.entities.singular;

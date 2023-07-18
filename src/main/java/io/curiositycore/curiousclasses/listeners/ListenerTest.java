@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.UUID;
 //TODO determine best way to set up the chain of calls to get the skill.
@@ -23,7 +24,6 @@ public class ListenerTest implements Listener {
         this.archetypeManager = archetypeManager;
     }
 
-    //TODO method to call skill not added yet.
     @EventHandler
     public void onMobKill(EntityDeathEvent entityDeathEvent){
         LivingEntity entityKilled = entityDeathEvent.getEntity();
@@ -46,7 +46,7 @@ public class ListenerTest implements Listener {
         this.archetypeManager.activateAbility(entityDeathEvent,killer.getUniqueId(),killer);
     }
     @EventHandler
-    public void onPlayerJoinTest(PlayerJoinEvent playerJoinEvent){
+    public void onPlayerJoinTest(PlayerJoinEvent playerJoinEvent) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         WarriorArchetype warriorArchetype = new WarriorArchetype(new WarriorArchetypeBuilder(), playerJoinEvent.getPlayer());
         this.archetypeManager.addToManager(warriorArchetype);
     }

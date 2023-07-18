@@ -26,6 +26,6 @@ public interface Skill<T> {
      */
     boolean meetsRequirements(Player player);
 
-    void activate(T skillTarget);
+    void activate(T skillOwner);
 
 }

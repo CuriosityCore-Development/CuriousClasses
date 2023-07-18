@@ -39,7 +39,9 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
     public<C extends BaseArchetype> boolean isOfType(Class<C> clazz, UUID archetypeId){
         return this.archetypeMap.get(archetypeId).getClass() == clazz;
     }
-    public <T> void activateAbility(Event eventName, UUID archeTypeId, T targetOfAbility){
-        this.archetypeMap.get(archeTypeId).getEventSkillSet().get(eventName.getClass()).forEach(skill->skill.activate(targetOfAbility));
+    //TODO add event checks, i.e. checks to be done when an ability is triggered by an event (probably best to add to
+    //     the passive skill interface. Or perhaps adding a new "reactive skill" interface that extends PassiveSkill.
+    public <T> void activateAbility(Event event, UUID archeTypeId, T targetOfAbility){
+        this.archetypeMap.get(archeTypeId).getEventSkillSet().get(event.getClass()).forEach(skill->skill.activate(targetOfAbility));
     }
 }

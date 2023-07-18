@@ -1,4 +1,4 @@
-package io.curiositycore.curiousclasses.archetypes.skills.interfaces;
+package io.curiositycore.curiousclasses.archetypes.skills.interfaces.base;
 
 /**
  * Interface that represents skills that have a set duration.
