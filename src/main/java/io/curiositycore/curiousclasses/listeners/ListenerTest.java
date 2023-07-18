@@ -5,7 +5,10 @@ import io.curiositycore.curiousclasses.archetypes.archetype.types.WarriorArchety
 import io.curiositycore.curiousclasses.archetypes.managers.ArchetypeManager;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -23,19 +26,27 @@ public class ListenerTest implements Listener {
     //TODO method to call skill not added yet.
     @EventHandler
     public void onMobKill(EntityDeathEvent entityDeathEvent){
+        LivingEntity entityKilled = entityDeathEvent.getEntity();
         if(!(entityDeathEvent.getEntity() instanceof Monster)){
             Bukkit.getLogger().info("Wasnt a monster");
             return;
         }
-        if(this.archetypeManager.isWithinMap(Objects.requireNonNull(entityDeathEvent.getEntity().getKiller()).getUniqueId())){
-            Bukkit.getLogger().info("Got to activation");
-            this.archetypeManager.isOfType(WarriorArchetype.class,entityDeathEvent.getEntity().getKiller().getUniqueId());
+        Player killer = entityKilled.getKiller();
+        assert killer != null;
+        if(!this.archetypeManager.isWithinMap(Objects.requireNonNull(killer).getUniqueId())){
+            Bukkit.getLogger().info("Was not in the skill map");
+            return;
+
         }
-        Bukkit.getLogger().info("Got to end so no leather helmet");
+        if(!this.archetypeManager.isOfType(WarriorArchetype.class,killer.getUniqueId())){
+            Bukkit.getLogger().info("Was not a warrior");
+            return;
+        }
+
+        this.archetypeManager.activateAbility(entityDeathEvent,killer.getUniqueId(),killer);
     }
     @EventHandler
     public void onPlayerJoinTest(PlayerJoinEvent playerJoinEvent){
-        UUID playerId = playerJoinEvent.getPlayer().getUniqueId();
         WarriorArchetype warriorArchetype = new WarriorArchetype(new WarriorArchetypeBuilder(), playerJoinEvent.getPlayer());
         this.archetypeManager.addToManager(warriorArchetype);
     }

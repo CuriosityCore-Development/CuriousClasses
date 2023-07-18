@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 /**
  * Interface that represents a Skill within the plugin.
  */
-public interface Skill {
+public interface Skill<T> {
     /**
      * Get the name of the skill.
      * @return The name of the skill.
@@ -25,5 +25,7 @@ public interface Skill {
      * @return True if they meet the skills requirements, false if they do not.
      */
     boolean meetsRequirements(Player player);
+
+    void activate(T skillTarget);
 
 }

@@ -22,5 +22,7 @@ public abstract class PlayerArchetype extends BaseArchetype implements Playable 
     protected PlayerArchetype(ArchetypeBuilder archetypeBuilder, Player player) {
         super(archetypeBuilder);
         this.archetypeOwner = player;
+        this.archetypeId = player.getUniqueId();
+
     }
 }

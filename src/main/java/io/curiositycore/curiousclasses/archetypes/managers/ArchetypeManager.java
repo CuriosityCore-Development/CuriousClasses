@@ -1,9 +1,13 @@
 package io.curiositycore.curiousclasses.archetypes.managers;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.BaseArchetype;
+import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
+import io.curiositycore.curiousclasses.archetypes.tier.Tier;
+import org.bukkit.event.Event;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -34,5 +38,8 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
 
     public<C extends BaseArchetype> boolean isOfType(Class<C> clazz, UUID archetypeId){
         return this.archetypeMap.get(archetypeId).getClass() == clazz;
+    }
+    public <T> void activateAbility(Event eventName, UUID archeTypeId, T targetOfAbility){
+        this.archetypeMap.get(archeTypeId).getEventSkillSet().get(eventName.getClass()).forEach(skill->skill.activate(targetOfAbility));
     }
 }

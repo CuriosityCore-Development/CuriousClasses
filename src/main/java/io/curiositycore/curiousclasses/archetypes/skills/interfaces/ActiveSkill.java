@@ -10,4 +10,5 @@ public interface ActiveSkill{
      * Activate the skills ability
      */
     void activateAbility(Player player);
+
 }

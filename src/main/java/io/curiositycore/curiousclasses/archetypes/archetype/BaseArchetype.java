@@ -6,6 +6,7 @@ import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.event.Event;
 
 import java.util.Map;
 import java.util.Set;
@@ -33,17 +34,13 @@ public abstract class BaseArchetype implements Archetype {
      * Map containing all skills for each tier, contained within a set.
      */
     protected Map<Tier, Set<Skill>> skillMap;
-
-
-    //TODO This is not good enough, there needs to be a more focused class type for individual archetypes to be
-    //     constructed from original data (Perhaps a builder pattern implementation?)
+    protected Map<Class<? extends Event>,Set<Skill>> eventSkillSet;
     /**
      * Constructor for the initialisation that utilises a builder object to initialise the archetype.
      * @param archetypeBuilder The builder utilised to create the archetype.
      */
     protected BaseArchetype(ArchetypeBuilder archetypeBuilder){
         archetypeBuilder.build(this);
-
     }
 
 }

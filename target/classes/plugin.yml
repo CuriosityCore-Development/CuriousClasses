@@ -1,5 +1,5 @@
 name: CuriousClasses
-version: '${project.version}'
+version: '1.0-SNAPSHOT'
 main: io.curiositycore.curiousclasses.CuriousClasses
 description: "plugin Test"
 api-version: 1.19
