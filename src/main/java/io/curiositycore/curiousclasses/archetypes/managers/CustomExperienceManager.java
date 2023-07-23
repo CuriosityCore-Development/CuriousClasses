@@ -15,10 +15,10 @@ public class CustomExperienceManager implements Manager<ArchetypeExperience>{
      * A map of experience orb UUID keys linked to player UUID values. These are essentally the experience orb and their
      * target respectfully.
      */
-    private Map<UUID,UUID> experienceIdMap;
+    private Map<UUID,ArchetypeExperience> experienceIdMap;
     @Override
     public void addToManager(ArchetypeExperience experienceOrbToAdd) {
-        this.experienceIdMap.put(experienceOrbToAdd.getExperienceOrbId(),experienceOrbToAdd.getTargetid());
+        this.experienceIdMap.put(experienceOrbToAdd.getExperienceOrbId(),experienceOrbToAdd);
     }
 
     @Override
@@ -40,6 +40,23 @@ public class CustomExperienceManager implements Manager<ArchetypeExperience>{
      * not.
      */
     public boolean isCorrectTargetForOrb(UUID orbId, UUID targetId){
-        return this.experienceIdMap.get(orbId) == targetId;
+        return this.experienceIdMap.get(orbId).getTargetid() == targetId;
+    }
+
+    /**
+     * Gets the amount of progress an Archetype Experience orb will provide.
+     * @param orbId The unique id of the Archetype Experience orb.
+     * @return The amount of progress provided by the orb.
+     */
+    public int getExperienceAmount(UUID orbId){
+        return this.experienceIdMap.get(orbId).getProgressAmount();
+    }
+
+    /**
+     * Ends a currently active particle effect related to an Archetype Experience Orb.
+     * @param orbId The unique id of the Archetype Experience Orb.
+     */
+    public void endOrbEffect(UUID orbId){
+        this.experienceIdMap.get(orbId).endEffect();
     }
 }

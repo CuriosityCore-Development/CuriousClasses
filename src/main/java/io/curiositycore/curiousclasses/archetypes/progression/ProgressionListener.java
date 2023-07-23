@@ -1,11 +1,11 @@
 package io.curiositycore.curiousclasses.archetypes.progression;
 
-import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import io.curiositycore.curiousclasses.archetypes.managers.ArchetypeManager;
 import io.curiositycore.curiousclasses.archetypes.managers.CustomExperienceManager;
+
+import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 
 import java.net.http.WebSocket;
@@ -21,13 +21,15 @@ public class ProgressionListener implements WebSocket.Listener {
      * Instance of the CustomExperienceManager of the plugin.
      */
     CustomExperienceManager customExperienceManager;
+    ArchetypeManager archetypeManager;
 
     /**
      * Constructor which initialises the custom experience manager.
      * @param customExperienceManager The plugin's custom experience manager.
      */
-    public ProgressionListener(CustomExperienceManager customExperienceManager){
+    public ProgressionListener(ArchetypeManager archetypeManager, CustomExperienceManager customExperienceManager){
         this.customExperienceManager = customExperienceManager;
+        this.archetypeManager = archetypeManager;
     }
 
     /**
@@ -57,13 +59,17 @@ public class ProgressionListener implements WebSocket.Listener {
     @EventHandler
     public void onExpPickup(PlayerPickupExperienceEvent experienceEvent){
         ExperienceOrb experienceOrb = experienceEvent.getExperienceOrb();
-        if(!this.customExperienceManager.isWithinMap(experienceOrb.getUniqueId())){
+        UUID orbId = experienceOrb.getUniqueId();
+        if(!this.customExperienceManager.isWithinMap(orbId)){
             return;
         }
-        if (!this.customExperienceManager.isCorrectTargetForOrb(experienceOrb.getUniqueId(),
+        if (!this.customExperienceManager.isCorrectTargetForOrb(orbId,
                 experienceEvent.getPlayer().getUniqueId())){
             experienceEvent.setCancelled(true);
         }
-
+        int orbProgressAmount = this.customExperienceManager.getExperienceAmount(orbId);
+        this.archetypeManager.addProgressionToPlayer(experienceEvent.getPlayer().getUniqueId(),orbProgressAmount);
+        this.customExperienceManager.endOrbEffect(orbId);
     }
 }
+

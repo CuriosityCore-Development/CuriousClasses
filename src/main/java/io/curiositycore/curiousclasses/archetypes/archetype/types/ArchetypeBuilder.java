@@ -2,6 +2,7 @@ package io.curiositycore.curiousclasses.archetypes.archetype.types;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.BaseArchetype;
 import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.Builder;
+import io.curiositycore.curiousclasses.archetypes.progression.ArchetypeProgression;
 import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
 import org.bukkit.event.Event;
@@ -45,7 +46,7 @@ public abstract class ArchetypeBuilder<T extends BaseArchetype> implements Build
       archetypeToBuild.setArchetypeTier(setArchetypeTier());
       archetypeToBuild.setSkillMap(setArchetypeSkillMap());
       archetypeToBuild.setEventSkillSet(setArchetypeEventMap());
-
+      archetypeToBuild.setArchetypeProgression(setArchetypeProgression());
    }
 
    /**
@@ -78,4 +79,6 @@ public abstract class ArchetypeBuilder<T extends BaseArchetype> implements Build
     * @return The skill set of the requested archetype tier.
     */
    protected abstract Set<Skill> initialiseTierSet(Tier tierOfSet);
+
+   protected abstract ArchetypeProgression setArchetypeProgression();
 }

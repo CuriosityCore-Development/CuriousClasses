@@ -1,5 +1,6 @@
 package io.curiositycore.curiousclasses.archetypes.archetype.types;
 
+import io.curiositycore.curiousclasses.archetypes.progression.ArchetypeProgression;
 import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.skills.skill.RegenOnMobKill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
@@ -54,6 +55,11 @@ public class WarriorArchetypeBuilder extends ArchetypeBuilder<WarriorArchetype>{
     protected Set<Skill> initialiseTierSet(Tier tierOfSet) {
 
         return null;
+    }
+
+    @Override
+    protected ArchetypeProgression setArchetypeProgression() {
+        return new ArchetypeProgression(50);
     }
 
 

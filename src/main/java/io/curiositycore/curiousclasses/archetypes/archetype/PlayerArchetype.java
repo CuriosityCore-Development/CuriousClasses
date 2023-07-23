@@ -14,7 +14,7 @@ public abstract class PlayerArchetype extends BaseArchetype implements Playable 
     /**
      * The player who this archetype is attached to.
      */
-    Player archetypeOwner;
+    protected Player archetypeOwner;
     /**
      * Constructor for the initialisation that utilises a builder object to initialise the archetype.
      *

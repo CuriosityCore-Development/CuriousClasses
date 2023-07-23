@@ -23,9 +23,10 @@ public interface Progression {
     int getCurrentProgression();
 
     /**
-     * Resets the target's progression.
+     * Resets the target's progression and required progression for upgrade. This method is called when the target
+     * has completed the current progression requirement.
      */
-    void resetProgression();
+    void resetProgression(int requiredProgressAmount);
 
     /**
      * Gets the amount of remaining progression required before the Archetype upgrades.

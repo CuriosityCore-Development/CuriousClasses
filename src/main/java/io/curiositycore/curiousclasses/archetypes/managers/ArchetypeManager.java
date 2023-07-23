@@ -58,4 +58,29 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
     public <T> void activateAbility(Event event, UUID archeTypeId, T targetOfAbility){
         this.archetypeMap.get(archeTypeId).getEventSkillSet().get(event.getClass()).forEach(skill->skill.activate(targetOfAbility));
     }
+
+    /**
+     * Upgrades an Archetype to its next tier.
+     * @param archetypeId The unique id of the Archetype to upgrade.
+     */
+    public void increaseArchetypeTier(UUID archetypeId){
+        this.archetypeMap.get(archetypeId).upgradeTier();
+    }
+
+    /**
+     * Downgrades an Archetype to its previous tier.
+     * @param archetypeId The unique id of the Archetype to downgrade.
+     */
+    public void decreaseArchetypeTier(UUID archetypeId){
+        this.archetypeMap.get(archetypeId).downgradeTier();
+    }
+
+    /**
+     * Adds progress to the specified Archetype.
+     * @param archetypeId The unique id of the Archetype.
+     * @param progressionAmount The amount of progress to add to the Archetype.
+     */
+    public void addProgressionToPlayer(UUID archetypeId, int progressionAmount){
+        this.archetypeMap.get(archetypeId).getArchetypeProgression().addProgression(progressionAmount);
+    }
 }
