@@ -1,2 +1,4 @@
-//TODO this package will be responsible for implementation of persistence of data via the CuriosityCore library.
+/**
+ * Classes relevant to the persistence of plugin data.
+ */
 package io.curiositycore.curiousclasses.database;
