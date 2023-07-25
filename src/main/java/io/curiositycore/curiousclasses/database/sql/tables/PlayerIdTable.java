@@ -1,5 +1,6 @@
 package io.curiositycore.curiousclasses.database.sql.tables;
 
+import io.curiositycore.thecuriositycore.database.mysql.queries.SqlDataTypes;
 import io.curiositycore.thecuriositycore.database.mysql.table.BaseSqlTable;
 import io.curiositycore.thecuriositycore.database.mysql.table.SqlColumn;
 
@@ -21,7 +22,10 @@ public class PlayerIdTable extends BaseSqlTable {
     }
 
     @Override
-    protected SqlColumn[] initColumns(boolean b) {
-        return new SqlColumn[0];
+    protected SqlColumn[] initColumns(boolean tableExistsInDatabase) {
+        addColumnToTable("playerId", SqlDataTypes.SMALLINT,10000,tableExistsInDatabase);
+        addColumnToTable("playerUUID",SqlDataTypes.CHAR,36,tableExistsInDatabase);
+
+        return this.columnsInTable;
     }
 }

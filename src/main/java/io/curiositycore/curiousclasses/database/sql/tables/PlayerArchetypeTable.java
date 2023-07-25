@@ -23,11 +23,11 @@ public class PlayerArchetypeTable extends BaseSqlTable {
     }
 
     @Override
-    protected SqlColumn[] initColumns(boolean existsInDatabase) {
-        addColumnToTable("playerId", SqlDataTypes.SMALLINT,10000,existsInDatabase);
-        addColumnToTable("ArchetypeId",SqlDataTypes.SMALLINT,10000,existsInDatabase);
-        addColumnToTable("currentProgress",SqlDataTypes.SMALLINT,50000,existsInDatabase);
-        addColumnToTable("progressUntilUpgrade",SqlDataTypes.SMALLINT,50000,existsInDatabase);
+    protected SqlColumn[] initColumns(boolean tableExistsInDatabase) {
+        addColumnToTable("playerId", SqlDataTypes.SMALLINT,10000,tableExistsInDatabase);
+        addColumnToTable("ArchetypeId",SqlDataTypes.SMALLINT,10000,tableExistsInDatabase);
+        addColumnToTable("currentProgress",SqlDataTypes.SMALLINT,50000,tableExistsInDatabase);
+        addColumnToTable("progressUntilUpgrade",SqlDataTypes.SMALLINT,50000,tableExistsInDatabase);
         return this.columnsInTable;
     }
 

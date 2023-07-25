@@ -1,5 +1,6 @@
 package io.curiositycore.curiousclasses.database.sql.tables;
 
+import io.curiositycore.thecuriositycore.database.mysql.queries.SqlDataTypes;
 import io.curiositycore.thecuriositycore.database.mysql.table.BaseSqlTable;
 import io.curiositycore.thecuriositycore.database.mysql.table.SqlColumn;
 
@@ -10,6 +11,7 @@ import javax.sql.DataSource;
  * {@linkplain io.curiositycore.curiousclasses.archetypes.archetype.PlayerArchetype PlayerArchetype}.
  */
 public class ArchetypeIdTable extends BaseSqlTable {
+
     /**
      * Constructor which initialises the datasource and name of the table.
      * @param dataSourceForTable The datasource of the database the table resides.
@@ -20,7 +22,9 @@ public class ArchetypeIdTable extends BaseSqlTable {
     }
 
     @Override
-    protected SqlColumn[] initColumns(boolean b) {
-        return new SqlColumn[0];
+    protected SqlColumn[] initColumns(boolean tableExistsInDatabase) {
+        addColumnToTable("archetypeId", SqlDataTypes.SMALLINT,10000,tableExistsInDatabase);
+        addColumnToTable("archetypeName",SqlDataTypes.CHAR,50,tableExistsInDatabase);
+        return this.columnsInTable;
     }
 }
