@@ -2,6 +2,8 @@ package io.curiositycore.curiousclasses.archetypes.archetype;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.interfaces.Playable;
 import io.curiositycore.curiousclasses.archetypes.archetype.types.ArchetypeBuilder;
+import io.curiositycore.curiousclasses.archetypes.progression.ArchetypeExperience;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +13,10 @@ import java.lang.reflect.InvocationTargetException;
  * future-proofing the plugin. For example, if an archetype that could be attached to mobs was required in future.
  */
 public abstract class PlayerArchetype extends BaseArchetype implements Playable {
+    protected ArchetypeExperience archetypeExperience;
+    public void spawnExperience(Location locationOfSpawn){
+        this.archetypeExperience.spawnExperienceOrb(this.archetypeOwner, locationOfSpawn);
+    }
     /**
      * The player who this archetype is attached to.
      */

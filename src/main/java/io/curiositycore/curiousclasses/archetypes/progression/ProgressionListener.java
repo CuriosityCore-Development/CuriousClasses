@@ -6,6 +6,7 @@ import io.curiositycore.curiousclasses.archetypes.managers.CustomExperienceManag
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 
 import java.net.http.WebSocket;
@@ -16,7 +17,7 @@ import java.util.UUID;
  * could involve {@linkplain io.curiositycore.curiousclasses.archetypes.progression.ArchetypeExperience ArchetypeExperience}
  * drops.
  */
-public class ProgressionListener implements WebSocket.Listener {
+public class ProgressionListener implements Listener {
     /**
      * Instance of the CustomExperienceManager of the plugin.
      */

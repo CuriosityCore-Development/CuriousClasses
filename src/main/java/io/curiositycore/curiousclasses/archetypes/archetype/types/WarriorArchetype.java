@@ -1,6 +1,7 @@
 package io.curiositycore.curiousclasses.archetypes.archetype.types;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.PlayerArchetype;
+import io.curiositycore.curiousclasses.archetypes.progression.types.WarriorExperienceOrb;
 import org.bukkit.entity.Player;
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,6 +17,7 @@ public class WarriorArchetype extends PlayerArchetype {
      */
     public WarriorArchetype(ArchetypeBuilder archetypeBuilder, Player player) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(archetypeBuilder, player);
+        this.archetypeExperience = new WarriorExperienceOrb();
     }
     @Override
     public void upgradeTier() {

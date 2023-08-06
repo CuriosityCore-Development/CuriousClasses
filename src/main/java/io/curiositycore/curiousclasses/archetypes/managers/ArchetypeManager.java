@@ -1,8 +1,11 @@
 package io.curiositycore.curiousclasses.archetypes.managers;
 
 import io.curiositycore.curiousclasses.archetypes.archetype.BaseArchetype;
+import io.curiositycore.curiousclasses.archetypes.archetype.PlayerArchetype;
 import io.curiositycore.curiousclasses.archetypes.skills.interfaces.Skill;
 import io.curiositycore.curiousclasses.archetypes.tier.Tier;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.event.Event;
 
 import java.util.HashMap;
@@ -82,5 +85,14 @@ public class ArchetypeManager implements Manager<BaseArchetype>{
      */
     public void addProgressionToPlayer(UUID archetypeId, int progressionAmount){
         this.archetypeMap.get(archetypeId).getArchetypeProgression().addProgression(progressionAmount);
+    }
+
+    public void spawnExperienceOrb(UUID archetypeId, Location locationToSpawn){
+        if(!(this.archetypeMap.get(archetypeId) instanceof PlayerArchetype playerArchetype)){
+            Bukkit.getLogger().info(this.archetypeMap.get(archetypeId).getClass().toString());
+            return;
+        }
+        Bukkit.getLogger().info("spawning xp");
+        playerArchetype.spawnExperience(locationToSpawn);
     }
 }
